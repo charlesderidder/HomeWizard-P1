@@ -5,7 +5,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $result = curl_exec($ch);
 if (curl_errno($ch)) { echo curl_error($ch); }
 else {
- // echo $result; / STRING  verwijder "//" om alle data weer te geven
+ // echo $result;
   $decoded = json_decode($result);
 
 echo "<b> METER INFO </b> <br/><b> SMR Versie: </b>";
