@@ -44,17 +44,10 @@ echo "<b>HUIDIG VERBRUIK</b><br/><b> Totaal stroomverbruik:</b>";
 echo $decoded->active_power_w;
 echo (" Watt <br/>");
 
-echo "<b>Totaal L1:</b>";
-echo $decoded->active_power_l1_w;
-echo (" Watt <br/>");
+echo "<b>Totaal L1: </b>$decoded->active_power_l1_w Watt <br/>";
+echo "<b>Totaal L2: </b>$decoded->active_power_l2_w Watt <br/>";
+echo ("<b> Totaal L3: </b>$decoded->active_power_l3_w Watt<br/><br/> ");
 
-echo "<b>Totaal L2: </b>";
-echo $decoded->active_power_l2_w;
-echo (" Watt <br/>");
- 
-echo ("<b> Totaal L3: </b> ");
-echo $decoded->active_power_l3_w;
-echo (" Watt<br/><br/>");
 }
 curl_close($ch);
 ?>
