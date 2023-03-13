@@ -5,4 +5,4 @@ HomeWizard P1 meter php script
 Met dit kant-en-klare php script kan je eenvoudig live informatie op je website tonen.
 Wijzig slechts het ip-adres naar het ipadres van je HomeWizard P1 meter.
 
-![HomeWizard P1 Slimme Meter PHP Script](https://user-images.githubusercontent.com/51724441/165858410-d7f8e114-508d-4b33-9d15-4b24481bcadd.png)
+![HomeWizard P1 Slimme Meter PHP Script](https://user-images.githubusercontent.com/51724441/224676203-d0fd5848-92a2-41cf-9e00-f4684d493619.png)
