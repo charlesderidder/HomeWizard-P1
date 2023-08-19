@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomeWizard P1 Meter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: black;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #000000;
+      padding: 8px;
+      text-align: center;
+	  color: black;
+    }
+    th {
+      background-color: #888;
+	  color: white;
+    }
+    .green-text {
+      color: green;
+    }
+    .red-text {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="meterData"></div>
+  <script>
+    function fetchData() {
+      fetch("http://192.168.178.13/api/v1/data")
+        .then(response => response.json())
+        .then(data => {
+          const meterData = document.getElementById("meterData");
+          meterData.innerHTML = `
+            <h1>HomeWizard P1 Meter</h1>
+            <center><b>Huidig verbruik: </b>${data.active_power_w} Watt</center><br>
+            <!--<b>Stroomuitval: </b>${data.any_power_fail_count}<br>
+            <b>Stroomuitval lang: </b>${data.long_power_fail_count}<br><br>-->
+            <table>
+              <tr>
+                <th></th>
+                <th>Import</th>
+                <th>Export</th>
+              </tr>
+              <tr>
+                <td>T1</td>
+                <td><b style="color: red;">${data.total_power_import_t1_kwh}</b></td>
+                <td><b style="color: green;">${data.total_power_export_t1_kwh}</b></td>
+              </tr>
+              <tr>
+                <td>T2</td>
+                <td><b style="color: red;">${data.total_power_import_t2_kwh}</b></td>
+                <td><b style="color: green;">${data.total_power_export_t2_kwh}</b></td>
+              </tr>
+              <tr>
+                <td>Totaal</td>
+                <td><b style="color: red;">${data.total_power_import_kwh}</b></td>
+                <td><b style="color: green;">${data.total_power_export_kwh}</b></td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <th>Fase</th>
+                <th>Watt</th>
+                <th>Volt</th>
+                <th>Ampere</th>
+              </tr>
+              <tr>
+                <td>L1</td>
+                <td class="${data.active_power_l1_w < 0 ? 'green-text' : 'red-text'}">${data.active_power_l1_w}</td>
+                <td class="${data.active_voltage_l1_v > 240 ? 'red-text' : ''}">${data.active_voltage_l1_v}</td>
+                <td>${data.active_current_l1_a}</td>
+              </tr>
+              <tr>
+                <td>L2</td>
+                <td class="${data.active_power_l2_w < 0 ? 'green-text' : 'red-text'}">${data.active_power_l2_w}</td>
+                <td class="${data.active_voltage_l2_v > 240 ? 'red-text' : ''}">${data.active_voltage_l2_v}</td>
+                <td>${data.active_current_l2_a}</td>
+              </tr>
+              <tr>
+                <td>L3</td>
+                <td class="${data.active_power_l3_w < 0 ? 'green-text' : 'red-text'}">${data.active_power_l3_w}</td>
+                <td class="${data.active_voltage_l3_v > 240 ? 'red-text' : ''}">${data.active_voltage_l3_v}</td>
+                <td>${data.active_current_l3_a}</td>
+              </tr>
+            </table>
+          `;
+        })
+        .catch(error => {
+          console.error("Error fetching data:", error);
+        });
+    }
+
+    // Fetch data initially and then refresh every 5 seconds
+    fetchData();
+    setInterval(fetchData, 2000);
+  </script>
+</body>
+</html>
