@@ -37,17 +37,13 @@ echo "<b>Meter Model: </b>$decoded->meter_model<br/></b>";
 echo "<table border='1'><tr><th></th><th> Import </th><th> Export</th></tr>";
 echo "<tr> <td>T1</td>";
 echo "<td> <b style='color:red;'>$decoded->total_power_import_t1_kwh</b></td>";
-echo "<td> <b style='color:green;'>$decoded->total_power_export_t1_kwh</b></td>";
-echo "</tr>";
+echo "<td> <b style='color:green;'>$decoded->total_power_export_t1_kwh</b></td></tr>";
 echo "<tr><td>T2</td>";
 echo "<td> <b style='color:red;'>$decoded->total_power_import_t2_kwh</b></td>";
-echo "<td> <b style='color:green;'>$decoded->total_power_export_t2_kwh</b></td>";
-echo "</tr>";
+echo "<td> <b style='color:green;'>$decoded->total_power_export_t2_kwh</b></td></tr>";
 echo "<tr><td>Totaal</td>";
 echo "<td> <b style='color:red;'>$decoded->total_power_import_kwh</b></td>";
-echo "<td> <b style='color:green;'>$decoded->total_power_export_kwh</b></td>";
-echo "</tr>";	 
-echo "</table>";
+echo "<td> <b style='color:green;'>$decoded->total_power_export_kwh</b></td></tr></table>";
 
 // Display Fase/Watt/Voltage/Ampere in a table
 echo "<table border='1'><tr><th>Fase </th><th> Watt </th><th> Volt</th><th> Ampere</th></tr>";
